@@ -1,7 +1,7 @@
 import produce from 'immer';
 
 import appReducer from '../reducer';
-import { loadRepos, reposLoaded, repoLoadingError } from '../actions';
+import { loadRepos, lightsTurned, lightsTurningError } from '../actions';
 
 /* eslint-disable default-case, no-param-reassign */
 describe('appReducer', () => {
@@ -32,7 +32,7 @@ describe('appReducer', () => {
     expect(appReducer(state, loadRepos())).toEqual(expectedResult);
   });
 
-  it('should handle the reposLoaded action correctly', () => {
+  it('should handle the lightsTurned action correctly', () => {
     const fixture = [
       {
         name: 'My Repo',
@@ -45,12 +45,12 @@ describe('appReducer', () => {
       draft.currentUser = username;
     });
 
-    expect(appReducer(state, reposLoaded(fixture, username))).toEqual(
+    expect(appReducer(state, lightsTurned(fixture, username))).toEqual(
       expectedResult,
     );
   });
 
-  it('should handle the repoLoadingError action correctly', () => {
+  it('should handle the lightsTurningError action correctly', () => {
     const fixture = {
       msg: 'Not found',
     };
@@ -59,7 +59,7 @@ describe('appReducer', () => {
       draft.loading = false;
     });
 
-    expect(appReducer(state, repoLoadingError(fixture))).toEqual(
+    expect(appReducer(state, lightsTurningError(fixture))).toEqual(
       expectedResult,
     );
   });

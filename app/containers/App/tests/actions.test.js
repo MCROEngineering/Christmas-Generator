@@ -1,43 +1,47 @@
-import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR } from '../constants';
+import {
+  START_LIGHTS,
+  START_LIGHTS_SUCCESS,
+  START_LIGHTS_ERROR,
+} from '../constants';
 
-import { loadRepos, reposLoaded, repoLoadingError } from '../actions';
+import { loadRepos, lightsTurned, lightsTurningError } from '../actions';
 
 describe('App Actions', () => {
   describe('loadRepos', () => {
     it('should return the correct type', () => {
       const expectedResult = {
-        type: LOAD_REPOS,
+        type: START_LIGHTS,
       };
 
       expect(loadRepos()).toEqual(expectedResult);
     });
   });
 
-  describe('reposLoaded', () => {
+  describe('lightsTurned', () => {
     it('should return the correct type and the passed repos', () => {
       const fixture = ['Test'];
       const username = 'test';
       const expectedResult = {
-        type: LOAD_REPOS_SUCCESS,
+        type: START_LIGHTS_SUCCESS,
         repos: fixture,
         username,
       };
 
-      expect(reposLoaded(fixture, username)).toEqual(expectedResult);
+      expect(lightsTurned(fixture, username)).toEqual(expectedResult);
     });
   });
 
-  describe('repoLoadingError', () => {
+  describe('lightsTurningError', () => {
     it('should return the correct type and the error', () => {
       const fixture = {
         msg: 'Something went wrong!',
       };
       const expectedResult = {
-        type: LOAD_REPOS_ERROR,
+        type: START_LIGHTS_ERROR,
         error: fixture,
       };
 
-      expect(repoLoadingError(fixture)).toEqual(expectedResult);
+      expect(lightsTurningError(fixture)).toEqual(expectedResult);
     });
   });
 });

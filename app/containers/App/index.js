@@ -20,6 +20,7 @@ import Footer from 'components/Footer';
 import GlobalStyle from '../../global-styles';
 
 const AppWrapper = styled.div`
+  background: img('/images/bkg.png');
   max-width: calc(768px + 16px * 2);
   margin: 0 auto;
   display: flex;
@@ -31,10 +32,7 @@ const AppWrapper = styled.div`
 export default function App() {
   return (
     <AppWrapper>
-      <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
-      >
+      <Helmet titleTemplate="%s" defaultTitle="Christmas Generator">
         <meta name="description" content="A React.js Boilerplate application" />
       </Helmet>
       <Header />
